@@ -1,0 +1,33 @@
+plugins {
+    id 'org.jetbrains.kotlin.jvm' version '1.3.50'
+}
+
+group 'com.codependent.rsocket'
+version '1.0.0-SNAPSHOT'
+
+repositories {
+    maven { url 'https://repo.spring.io/snapshot' }
+    maven { url 'https://repo.spring.io/milestone' }
+    mavenCentral()
+}
+
+dependencies {
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8"
+    implementation 'io.rsocket:rsocket-core:1.0.0-RC5'
+    implementation 'io.rsocket:rsocket-transport-netty:1.0.0-RC5'
+    //compile 'io.netty:netty-tcnative-boringssl-static:2.0.27.Final'
+}
+
+compileKotlin {
+    kotlinOptions {
+        jvmTarget = '1.8'
+        javaParameters = true
+    }
+}
+
+compileTestKotlin {
+    kotlinOptions {
+        jvmTarget = '1.8'
+        javaParameters = true
+    }
+}
