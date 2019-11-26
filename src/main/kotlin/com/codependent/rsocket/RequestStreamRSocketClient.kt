@@ -6,6 +6,7 @@ import io.rsocket.frame.decoder.PayloadDecoder
 import io.rsocket.transport.netty.client.TcpClientTransport
 import io.rsocket.util.DefaultPayload
 import reactor.netty.tcp.TcpClient
+import java.io.File
 import java.util.concurrent.CountDownLatch
 
 class RequestStreamRSocketClient
@@ -15,16 +16,11 @@ fun main() {
 
     val latch = CountDownLatch(1)
 
-    val path = RequestStreamRSocketClient::class.java.getResource("truststore.jks").path
-    System.setProperty("javax.net.ssl.trustStore", path)
-    System.setProperty("javax.net.ssl.trustStorePassword", "123456")
-
-
     val client = RSocketFactory.connect()
         .frameDecoder(PayloadDecoder.DEFAULT)
         .transport(TcpClientTransport.create(TcpClient.create().port(7878).secure {
             it.sslContext(
-                SslContextBuilder.forClient()
+                SslContextBuilder.forClient().trustManager(File(RequestStreamRSocketClient::class.java.getResource("certificate.pem").path))
             )
         }))
         .start()
