@@ -13,8 +13,8 @@ repositories {
 
 dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8"
-    implementation 'io.rsocket:rsocket-core:1.0.0-RC5'
-    implementation 'io.rsocket:rsocket-transport-netty:1.0.0-RC5'
+    implementation 'io.rsocket:rsocket-core:1.0.0-RC7'
+    implementation 'io.rsocket:rsocket-transport-netty:1.0.0-RC7'
     //compile 'io.netty:netty-tcnative-boringssl-static:2.0.27.Final'
 }
 
