@@ -23,7 +23,6 @@ fun main() {
 
     val latch = CountDownLatch(1)
 
-
     RSocketServer.create()
         .payloadDecoder(PayloadDecoder.DEFAULT)
         .acceptor { setup, sendingSocket ->
@@ -48,8 +47,7 @@ fun main() {
                         )
                     )
                 })
-        )
-        .block()
+        ).block()
 
     latch.await()
 }

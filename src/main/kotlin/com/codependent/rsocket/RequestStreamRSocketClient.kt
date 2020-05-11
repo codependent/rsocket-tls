@@ -28,7 +28,7 @@ fun main() {
                     )
                 )
             })
-    ).block()
+    ).block()!!
 
     client.requestStream(DefaultPayload.create("10"))
         .map { it.dataUtf8 }
